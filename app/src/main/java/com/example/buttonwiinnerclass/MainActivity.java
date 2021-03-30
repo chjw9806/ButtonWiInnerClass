@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button mButton1, mButton2;
     TextView mTextView1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,23 +22,22 @@ public class MainActivity extends AppCompatActivity {
         mTextView1 = findViewById(R.id.textView1);
 
         mButton1.setOnClickListener(new MyOnClichListner());
-        mButton2.setOnClickListener(new MyOnClichListner2());
+        mButton2.setOnClickListener(new MyOnClichListner());
     }
 
-     class MyOnClichListner implements View.OnClickListener {
+    class MyOnClichListner implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            mTextView1.setText("You clicked jw's Button!");
-
-        }
-
-    }
-
-    private class MyOnClichListner2 implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            mTextView1.setText("You clicked 2nd Button!");
+            switch (v.getId()) {
+                case R.id.button1:
+                    mTextView1.setText("You clicked jw's Button!");
+                    break;
+                case R.id.button2:
+                    mTextView1.setText("You clicked 2nd Button!");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
